@@ -1,85 +1,49 @@
 function Footer() {
   const styles = {
-    footer: {
-      position: "fixed",
-      left: 0,
-      bottom: 0,
-      width: "100%",
-      backgroundColor: "#ffffff",
-      textAlign: "center",
-      padding: "32px 32px 32px 0",
-      borderTop: "1px solid #00000000",
-    },
-    grid: {
-      display: "grid",
-      gridTemplateColumns: "repeat(4, 1fr)",
-      gap: "40px",
-      textAlign: "left",
-      padding: "0 32px",
-    },
-    line: {
-      borderTop: "1px solid #686868",
-      margin: "10px 0",
-    },
-    mainText: {
-      color: "#0A0A0A",
-      fontSize: "18px",
-    },
-    secondaryText: {
-      color: "#717182",
-      fontSize: "16px",
-    },
-    email: {
-      padding: "8px 12px 8px 12px",
-      border: "1px solid #00000000",
-      borderRadius: "10px",
-      backgroundColor: "#F3F3F5",
-    },
-    subscribeButton: {
-      padding: "8px 12px 8px 12px",
-      border: "1px solid #00000000",
-      borderRadius: "10px",
-      backgroundColor: "#0A0A0A",
-      color: "#FFFFFF",
-      marginLeft: "8px",
-    },
+    footer: "fixed left-0 bottom-0 w-full bg-white text-center pt-8 pb-8 pr-8 border-t border-transparent",
+    grid: "grid grid-cols-4 gap-10 text-left px-8",
+    line: "border-t border-[#686868] my-2.5",
+    mainText: "text-[#0A0A0A] text-[18px]",
+    secondaryText: "text-[#717182] text-[16px]",
+    email: "px-3 py-2 border border-transparent rounded-lg bg-[#F3F3F5]",
+    subscribeButton: "px-3 py-2 border border-transparent rounded-lg bg-[#0A0A0A] text-white ml-2",
   };
   
   return (
-    <footer className="footer"
-      style={styles.footer}
-    >
-      <div style={styles.grid}>
+    <footer className={styles.footer}>
+      <div className={styles.grid}>
         <div>
-          <h3 style={styles.mainText}>About</h3>
-          <p style={styles.secondaryText}>About Us</p>
-          <p style={styles.secondaryText}>Careers</p>
-          <p style={styles.secondaryText}>Press</p>
+          <h3 className={styles.mainText}>About</h3>
+          <p className={styles.secondaryText}>About Us</p>
+          <p className={styles.secondaryText}>Careers</p>
+          <p className={styles.secondaryText}>Press</p>
         </div>
 
         <div>
-          <h3 style={styles.mainText}>Support</h3>
-          <p style={styles.secondaryText}>Contact</p>
-          <p style={styles.secondaryText}>FAQ</p>
-          <p style={styles.secondaryText}>Shipping</p>
+          <h3 className={styles.mainText}>Support</h3>
+          <p className={styles.secondaryText}>Contact</p>
+          <p className={styles.secondaryText}>FAQ</p>
+          <p className={styles.secondaryText}>Shipping</p>
         </div>
 
         <div>
-          <h3 style={styles.mainText}>Legal</h3>
-          <p style={styles.secondaryText}>Privacy Policy</p>
-          <p style={styles.secondaryText}>Terms of Service</p>
-          <p style={styles.secondaryText}>Returns</p>
+          <h3 className={styles.mainText}>Legal</h3>
+          <p className={styles.secondaryText}>Privacy Policy</p>
+          <p className={styles.secondaryText}>Terms of Service</p>
+          <p className={styles.secondaryText}>Returns</p>
         </div>
 
         <div>
-          <h3 style={styles.mainText}>Newsletter</h3>
-          <p style={styles.secondaryText}>Subscribe for exclusive deals</p>
-          <input placeholder="Email" style={styles.email} />
-          <button style={styles.subscribeButton}>Subscribe</button>
+          <h3 className={styles.mainText}>Newsletter</h3>
+          <p className={styles.secondaryText}>Subscribe for exclusive deals</p>
+          <input placeholder="Email" className={styles.email} />
+          <button className={styles.subscribeButton}>Subscribe</button>
         </div>
       </div>
-      < div style={styles.line}></div>
-      <p style={styles.secondaryText}>© 2026 TechStore. All rights reserved.</p>
+      
+      <div className={styles.line}></div>
+      
+      <p className={styles.secondaryText}>© 2026 TechStore. All rights reserved.</p>
     </footer>
   );
 }

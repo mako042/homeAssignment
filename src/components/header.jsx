@@ -7,11 +7,11 @@ function Header() {
       justifyContent: "space-between",
       alignItems: "center",
     },
+
     containers: {
-      paddingRight: "32px",
-      paddingLeft: "32px",
-      alignItems: "center",
       display: "flex",
+      alignItems: "center",
+      flex: 1,          
     },
     logo: {
       fontSize: "24px",
