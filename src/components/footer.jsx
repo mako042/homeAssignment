@@ -1,8 +1,7 @@
 function Footer() {
   const styles = {
-    footer: "bg-white border-t border-gray-200 mt-auto",   // ← главное изменение
+    footer: "bg-white border-t border-gray-200 mt-auto px-20",   
     grid: "grid grid-cols-4 gap-10 text-left px-8 py-8",
-    line: "border-t border-[#686868] my-6",
     mainText: "text-[#0A0A0A] text-[18px] font-semibold mb-3",
     secondaryText: "text-[#717182] text-[15px] hover:text-gray-900 cursor-pointer",
     email: "px-4 py-3 border border-gray-300 rounded-xl bg-white text-sm",
@@ -48,8 +47,6 @@ function Footer() {
           </div>
         </div>
       </div>
-      
-      <div className={styles.line}></div>
       
       <div className="text-center pb-6 text-[#717182] text-sm">
         © 2026 TechStore. All rights reserved.

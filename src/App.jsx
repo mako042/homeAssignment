@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <main style={{ flex: 1 }}>
+      <main className='flex-1 px-20'>
         <Content />
       </main>
       <Footer />
