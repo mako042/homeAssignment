@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className='flex-1 px-20'>
+      <main className='flex-1 px-5'>
         <Content />
       </main>
       <Footer />
