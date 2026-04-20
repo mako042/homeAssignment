@@ -3,18 +3,19 @@ function Header() {
     <header className="bg-white py-5 flex items-center justify-between px-20">
       
       <div className="flex items-center gap-10 flex-1">
-        <div className="text-2xl font-bold text-black">
-          TechStore
-        </div>
-
+        <a href="#">
+          <div className="text-2xl font-bold text-black">
+            TechStore
+          </div>
+        </a>
         <nav className="flex items-center gap-8">
-          <a href="#" className="text-gray-700 hover:text-black transition-colors text-[17px]">
+          <a href="/tv" className="text-gray-700 hover:text-black transition-colors text-[17px]">
             TV
           </a>
-          <a href="#" className="text-gray-700 hover:text-black transition-colors text-[17px]">
+          <a href="/phone" className="text-gray-700 hover:text-black transition-colors text-[17px]">
             Phone
           </a>
-          <a href="#" className="text-gray-700 hover:text-black transition-colors text-[17px]">
+          <a href="/laptop" className="text-gray-700 hover:text-black transition-colors text-[17px]">
             Laptop
           </a>
         </nav>
