@@ -15,6 +15,11 @@ const Filter = () => (
           className="w-full bg-gray-100 border border-gray-300 rounded-xl px-4 py-3 text-gray-700"
         >
           <option value="">All Brands</option>
+          <option value="">Samsung</option>
+          <option value="">LG</option>
+          <option value="">Sony</option>  
+          <option value="">TLC</option>
+          <option value="">Hiense</option>
         </select>
       </div>
     </div>
