@@ -1,8 +1,21 @@
 import Filter from "./filter";
 import SpecialDeal from "./specialDeal"
 import Cards from "./cards"
+import { useState, useEffect } from "react";
 
 function Content() {
+  const [productCount, setProductCount] = useState(0);
+
+  // Подписываемся на изменение количества товаров в Cards
+  useEffect(() => {
+    const updateCount = () => {
+      // Можно получить количество через событие или глобальное состояние,
+      // но самый простой и надёжный способ — передать callback в Cards
+      // Для этого немного изменим Cards (см. ниже)
+    };
+
+    // Пока оставляем заглушку — обновим после изменения Cards
+  }, []);
   return (
     <main className="flex gap-4 px-8 py-4">
       <div className="flex flex-col gap-4">
@@ -11,7 +24,7 @@ function Content() {
       </div>
       <section className="flex-1">
         <div className="flex justify-between items-center mb-4 mx-6">
-          <p>8 product</p>
+          <p>{productCount} products</p>
           <div className="flex items-center gap-3">
             <p className="text-black font-medium">Sort by:</p>
             <select
@@ -21,7 +34,7 @@ function Content() {
         </select>
           </div>
         </div>
-        <Cards />
+        <Cards setProductCount={setProductCount}/>
       </section>
     </main>
   );
