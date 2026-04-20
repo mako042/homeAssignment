@@ -1,5 +1,5 @@
 import products from '../data/products';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Card = ({ product }) => {
   const { brand, model, price, images, isSpecialOffer } = product;
@@ -55,9 +55,9 @@ const Card = ({ product }) => {
       </div>
 
       <div className="flex-1 flex flex-col p-6">
-        <div className="text-sm text-gray-500 mb-1">{brand}</div>
+        <div className="text-sm text-gray-500 mb-1 text-left">{brand}</div>
         
-        <h3 className="font-semibold text-[17px] leading-tight text-gray-900 mb-6 line-clamp-2 flex-1">
+        <h3 className="font-semibold text-[17px] leading-tight text-gray-900 mb-6 line-clamp-2 flex-1 text-left">
           {model}
         </h3>
         
@@ -78,9 +78,22 @@ const Card = ({ product }) => {
 };
 
 const Cards = () => {
+  //для будущей итерации -- сортировка в зависимости от категории в ссылке
+  // const [currentCategory, setCurrentCategory] = useState('');
+
+  // useEffect(() => {
+  //   const path = window.location.pathname;
+  //   const categoryFromUrl = path.split('/')[1] || ''; // берём часть после первого /
+  //   setCurrentCategory(categoryFromUrl);
+  // }, []);
+
+  // const filteredProducts = currentCategory 
+  //   ? products.filter(product => product.category === currentCategory)
+  //   : products;
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {products.map((product) => (
+      {/* {filteredProducts.map((product) => ( */}
+      {products.filter((product) => product.category === "tv").map((product) => (
         <Card key={product.id} product={product} />
       ))}
     </div>
