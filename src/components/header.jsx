@@ -3,7 +3,7 @@ function Header() {
     <header className="bg-white py-5 flex items-center justify-between px-20">
       
       <div className="flex items-center gap-10 flex-1">
-        <a href="#">
+        <a href="/tv">
           <div className="text-2xl font-bold text-black">
             TechStore
           </div>
