@@ -1,12 +1,13 @@
 import products from '../data/products';
 import { useState, useEffect } from 'react';
 
-const Card = ({ product }) => {
-  const { brand, model, price, images, isSpecialOffer } = product;
+const Card = ({ product, cart, setCart }) => {
+  const { id, brand, model, price, images, isSpecialOffer } = product;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFavorite, setIsFavorite] = useState(false);
-  const [cartQuantity, setCartQuantity] = useState(0);
+
+  const cartQuantity = cart[id] || 0;
 
   const prevImage = () => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -23,11 +24,21 @@ const Card = ({ product }) => {
   };
 
   const addToCart = () => {
-    setCartQuantity((prev) => prev + 1);
+    setCart(prev => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1
+    }));
   };
 
   const removeFromCart = () => {
-    setCartQuantity((prev) => Math.max(0, prev - 1));
+    setCart(prev => {
+      const newQty = (prev[id] || 0) - 1;
+      if (newQty <= 0) {
+        const { [id]: _, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [id]: newQty };
+    });
   };
 
   return (
@@ -126,27 +137,11 @@ const Card = ({ product }) => {
   );
 };
 
-const Cards = ({ setProductCount }) => {
-  const [currentCategory, setCurrentCategory] = useState('');
-
-  useEffect(() => {
-    const path = window.location.pathname;
-    const categoryFromUrl = path.split('/')[1] || '';
-    setCurrentCategory(categoryFromUrl);
-  }, []);
-
-  const filteredProducts = currentCategory
-    ? products.filter(product => product.category === "tv") 
-    : products;
-
-  useEffect(() => {
-    setProductCount(filteredProducts.length);
-  }, [filteredProducts.length, setProductCount]);
-
+const Cards = ({ products, cart, setCart }) => {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      {filteredProducts.map((product) => (
-        <Card key={product.id} product={product} />
+      {products.map((product) => (
+        <Card key={product.id} product={product} cart={cart} setCart={setCart} />
       ))}
     </div>
   );
