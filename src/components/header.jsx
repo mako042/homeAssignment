@@ -1,32 +1,54 @@
-function Header() {
+function Header({ pageType, setPageType, cart }) {
+  const totalItems = Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+
   return (
     <header className="bg-white py-5 flex items-center justify-between px-20">
       
       <div className="flex items-center gap-10 flex-1">
-        <a href="/tv">
-          <div className="text-2xl font-bold text-black">
-            TechStore
-          </div>
-        </a>
+        <div 
+          onClick={() => setPageType('tv')}
+          className="text-2xl font-bold text-black cursor-pointer"
+        >
+          TechStore
+        </div>
         <nav className="flex items-center gap-8">
-          <a href="/tv" className="text-gray-700 hover:text-black transition-colors text-[17px]">
+          <button 
+            onClick={() => setPageType('tv')} 
+            className={`transition-colors text-[17px] ${pageType === 'tv' ? 'text-black font-semibold' : 'text-gray-700 hover:text-black'}`}
+          >
             TV
-          </a>
-          <a href="/phone" className="text-gray-700 hover:text-black transition-colors text-[17px]">
+          </button>
+          <button 
+            onClick={() => setPageType('phone')} 
+            className={`transition-colors text-[17px] ${pageType === 'phone' ? 'text-black font-semibold' : 'text-gray-700 hover:text-black'}`}
+          >
             Phone
-          </a>
-          <a href="/laptop" className="text-gray-700 hover:text-black transition-colors text-[17px]">
+          </button>
+          <button 
+            onClick={() => setPageType('laptop')} 
+            className={`transition-colors text-[17px] ${pageType === 'laptop' ? 'text-black font-semibold' : 'text-gray-700 hover:text-black'}`}
+          >
             Laptop
-          </a>
+          </button>
         </nav>
       </div>
 
       <nav className="flex items-center gap-6">
-        <img 
-          src="/src/assets/cart.png" 
-          alt="Cart" 
-          className="w-9 h-9 cursor-pointer hover:scale-110 transition-transform" 
-        />
+        <div 
+          onClick={() => setPageType('cart')} 
+          className="relative cursor-pointer hover:scale-110 transition-transform"
+        >
+          <img 
+            src="/src/assets/cart.png" 
+            alt="Cart" 
+            className="w-9 h-9" 
+          />
+          {totalItems > 0 && (
+            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+              {totalItems}
+            </span>
+          )}
+        </div>
         <img 
           src="/src/assets/user.png" 
           alt="User" 
