@@ -5,6 +5,7 @@ import SpecialDeal from './specialDeal'
 import Cards from './cards'
 
 function ProductListing({ category, cart, setCart }) {
+  const [unsortedProducts, setUnsortedProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [sortType, setSortType] = useState('low-to-high')
   const [filters, setFilters] = useState({
@@ -28,14 +29,20 @@ function ProductListing({ category, cart, setCart }) {
       result = result.filter(p => p.price <= parseInt(filters.maxPrice))
     }
 
+    setUnsortedProducts(result)
+  }, [filters, category])
+
+  useEffect(() => {
+    const sorted = [...unsortedProducts]
+    
     if (sortType === 'low-to-high') {
-      result.sort((a, b) => a.price - b.price)
+      sorted.sort((a, b) => a.price - b.price)
     } else {
-      result.sort((a, b) => b.price - a.price)
+      sorted.sort((a, b) => b.price - a.price)
     }
 
-    setFilteredProducts(result)
-  }, [filters, sortType, category])
+    setFilteredProducts(sorted)
+  }, [sortType, unsortedProducts])
 
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters)
