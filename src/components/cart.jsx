@@ -1,4 +1,5 @@
 import products from '../data/products'
+import { formatPrice } from '../utils'
 
 function Cart({ cart, setCart, setPageType }) {
   const cartItems = Object.entries(cart).map(([id, quantity]) => {
@@ -9,14 +10,6 @@ function Cart({ cart, setCart, setPageType }) {
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
   const tax = (subtotal * 0.08).toFixed(2)
   const total = (parseFloat(subtotal) + parseFloat(tax)).toFixed(2)
-
-  const formatPrice = (price) => {
-    return '$' + price.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
-  }
-
-  const formatPriceWithCents = (price) => {
-    return '$' + parseFloat(price).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
-  }
 
   const handlePlus = (id) => {
     setCart(prev => ({
@@ -106,11 +99,11 @@ function Cart({ cart, setCart, setPageType }) {
           <div className="space-y-3 mb-6">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span className="font-medium">{formatPriceWithCents(subtotal)}</span>
+              <span className="font-medium">{formatPrice(subtotal, true)}</span>
             </div>
             <div className="flex justify-between">
               <span>Tax (8%)</span>
-              <span className="font-medium">{formatPriceWithCents(tax)}</span>
+              <span className="font-medium">{formatPrice(tax, true)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
@@ -120,7 +113,7 @@ function Cart({ cart, setCart, setPageType }) {
             <div className="border-t border-gray-300 pt-3 mt-3">
               <div className="flex justify-between text-lg font-bold">
                 <span>Total</span>
-                <span>{formatPriceWithCents(total)}</span>
+                <span>{formatPrice(total, true)}</span>
               </div>
             </div>
           </div>
