@@ -4,8 +4,8 @@ import Filter from './filter'
 import SpecialDeal from './specialDeal'
 import Cards from './cards'
 
-function PhoneListing({ cart, setCart }) {
-  const category = 'phone'
+function ProductListing({ category, cart, setCart }) {
+  const [unsortedProducts, setUnsortedProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [sortType, setSortType] = useState('low-to-high')
   const [filters, setFilters] = useState({
@@ -29,14 +29,20 @@ function PhoneListing({ cart, setCart }) {
       result = result.filter(p => p.price <= parseInt(filters.maxPrice))
     }
 
+    setUnsortedProducts(result)
+  }, [filters, category])
+
+  useEffect(() => {
+    const sorted = [...unsortedProducts]
+    
     if (sortType === 'low-to-high') {
-      result.sort((a, b) => a.price - b.price)
+      sorted.sort((a, b) => a.price - b.price)
     } else {
-      result.sort((a, b) => b.price - a.price)
+      sorted.sort((a, b) => b.price - a.price)
     }
 
-    setFilteredProducts(result)
-  }, [filters, sortType])
+    setFilteredProducts(sorted)
+  }, [sortType, unsortedProducts])
 
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters)
@@ -73,4 +79,4 @@ function PhoneListing({ cart, setCart }) {
   )
 }
 
-export default PhoneListing
+export default ProductListing
