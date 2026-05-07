@@ -4,8 +4,7 @@ import Filter from './filter'
 import SpecialDeal from './specialDeal'
 import Cards from './cards'
 
-function PhoneListing({ cart, setCart }) {
-  const category = 'phone'
+function ProductListing({ category, cart, setCart }) {
   const [filteredProducts, setFilteredProducts] = useState([])
   const [sortType, setSortType] = useState('low-to-high')
   const [filters, setFilters] = useState({
@@ -36,7 +35,7 @@ function PhoneListing({ cart, setCart }) {
     }
 
     setFilteredProducts(result)
-  }, [filters, sortType])
+  }, [filters, sortType, category])
 
   const handleApplyFilters = (newFilters) => {
     setFilters(newFilters)
@@ -73,4 +72,4 @@ function PhoneListing({ cart, setCart }) {
   )
 }
 
-export default PhoneListing
+export default ProductListing
